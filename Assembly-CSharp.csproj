@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D89D3D75-8E88-C427-B3F2-C7DB663F9575}</ProjectGuid>
+    <ProjectGuid>{90C982B8-7997-5E50-797A-538A5BCED848}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -46,24 +46,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Gamer.cs" />
-     <Compile Include="Assets\SB.cs" />
-     <Compile Include="Assets\SB1.cs" />
-     <Compile Include="Assets\SB2.cs" />
-     <Compile Include="Assets\SB3.cs" />
-     <Compile Include="Assets\SB4.cs" />
-     <Compile Include="Assets\SG1.cs" />
-     <Compile Include="Assets\SG2.cs" />
-     <Compile Include="Assets\SG3.cs" />
-     <Compile Include="Assets\SG4.cs" />
-     <Compile Include="Assets\SR1.cs" />
-     <Compile Include="Assets\SR2.cs" />
-     <Compile Include="Assets\SR3.cs" />
-     <Compile Include="Assets\SR4.cs" />
-     <Compile Include="Assets\SY1.cs" />
-     <Compile Include="Assets\SY2.cs" />
-     <Compile Include="Assets\SY3.cs" />
-     <Compile Include="Assets\SY4.cs" />
+     <Compile Include="Assets\New Folder\Gamer.cs" />
+     <Compile Include="Assets\New Folder\SB.cs" />
+     <Compile Include="Assets\New Folder\SB1.cs" />
+     <Compile Include="Assets\New Folder\SB2.cs" />
+     <Compile Include="Assets\New Folder\SB3.cs" />
+     <Compile Include="Assets\New Folder\SB4.cs" />
+     <Compile Include="Assets\New Folder\SG1.cs" />
+     <Compile Include="Assets\New Folder\SG2.cs" />
+     <Compile Include="Assets\New Folder\SG3.cs" />
+     <Compile Include="Assets\New Folder\SG4.cs" />
+     <Compile Include="Assets\New Folder\SR1.cs" />
+     <Compile Include="Assets\New Folder\SR2.cs" />
+     <Compile Include="Assets\New Folder\SR3.cs" />
+     <Compile Include="Assets\New Folder\SR4.cs" />
+     <Compile Include="Assets\New Folder\SY1.cs" />
+     <Compile Include="Assets\New Folder\SY2.cs" />
+     <Compile Include="Assets\New Folder\SY3.cs" />
+     <Compile Include="Assets\New Folder\SY4.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-LightedOutline.shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
@@ -71,7 +71,7 @@
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Lighted.shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Users/cravx2/Documents/Ludo/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Users/rambo/Desktop/ludoo/ludo/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{F4805B0D-1937-EAB4-3DD8-2DDB0E5430D7}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{80CAC578-263A-FAA8-69BB-70749FC72C53}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
