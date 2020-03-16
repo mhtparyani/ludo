@@ -8,7 +8,7 @@ public class SG1 : MonoBehaviour {
 	public string color;
 	public Vector3 initialPos;
 	void Start () {
-		initialPos=GameObject.Find("ig1").transform.position;
+		initialPos=transform.position;
 		pos=initialPos;
 		index=-1;
 		color="Green";

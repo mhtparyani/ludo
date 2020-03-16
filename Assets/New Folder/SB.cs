@@ -18,8 +18,11 @@ public class SB : MonoBehaviour {
 	void Update () {
 		
 		GetComponent<Rigidbody>().freezeRotation = true;
-		pos.y=(float)0.05;
-		this.GetComponent<Rigidbody>().MovePosition(pos);
+		//pos.y=(float)0.05;
+		Vector3 currentPosition = transform.position;
+		Vector3 newPosition = Vector3.Lerp(currentPosition, pos, 0.5f);
+		//this.GetComponent<Rigidbody>().MovePosition(pos);
+		transform.position = newPosition;
 	}
 	
 	public void ChangePosition(Vector3 p){

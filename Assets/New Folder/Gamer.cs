@@ -817,8 +817,39 @@ public class Gamer : MonoBehaviour {
 		}
 		
 	}
+
+	public void showTheMagic(int getSide){
+		Debug.Log("Gamer "+getSide);
+		dice = getSide;
+		GameObject.Find("T_Dice").GetComponent<GUIText>().material.color=Color.black;
+		GameObject.Find("T_Dice").GetComponent<GUIText>().text=dice.ToString();
+
+		GameObject.Find("T_Error").GetComponent<GUIText>().text="";
+
+		if (dice < 6 && ((turn == 1 && RP.Nikli == 0) || (turn == 2 && RB.Nikli == 0) || (turn == 3 && RY.Nikli == 0) || (turn == 4 && RG.Nikli == 0))) {
+
+			GameObject.Find ("T_Error").GetComponent<GUIText> ().material.color = Color.red;
+			GameObject.Find ("T_Error").GetComponent<GUIText> ().text = "No Move Possible!!!";
+
+			isError = true;
+			errorTimeOut = Time.time + 1;
+		}
+		else
+			isWaiting=false;
+
+		/*if( dice<6 && ( (turn==2 && RB.Nikli==0) || (turn==4 && RG.Nikli==0))){
+
+			GameObject.Find("T_Error").GetComponent<GUIText>().material.color=Color.red;
+			GameObject.Find("T_Error").GetComponent<GUIText>().text="No Move Possible!!!";
+
+			goto Finish_AI_Turn;		
+		}
+
+		Finish_AI_Turn:
+		;*/		
+	}
 	
-	void RollTheDice(){
+	/*void RollTheDice(){
 		GameObject g=GameObject.Find("pCube1");
 		
 	    Vector3 pos=g.GetComponent<Rigidbody>().transform.position;
@@ -826,7 +857,7 @@ public class Gamer : MonoBehaviour {
 		pos.z+=2;
 		g.GetComponent<Rigidbody>().AddTorque(25,0,25);
 		g.GetComponent<Rigidbody>().AddForce (pos);
-	}
+	}*/
 	
 	void DisplayInfo(){
 		
@@ -866,7 +897,7 @@ public class Gamer : MonoBehaviour {
 			greeenQ.SetActive(false);
 			blueeQ.SetActive(true);
 			yellowQ.SetActive(false);
-
+			//GameObject.Find ("bl").GetComponent<Dice> ().rollIt ();
 			//GameObject.Find("T_Turn").GetComponent<GUIText>().material.color=Color.blue;
 
 			//GameObject.Find("T_Turn").GetComponent<GUIText>().text="BLUE's Turn (AI)";
@@ -922,7 +953,7 @@ public class Gamer : MonoBehaviour {
 			greeenQ.SetActive(true);
 			blueeQ.SetActive(false);
 			yellowQ.SetActive(false);
-
+			//GameObject.Find ("gl").GetComponent<Dice> ().rollIt ();
 			//	GameObject.Find("T_Turn").GetComponent<GUIText>().material.color=Color.green;
 
 			//	GameObject.Find("T_Turn").GetComponent<GUIText>().text="GREEN's Turn (AI)";
@@ -1016,6 +1047,11 @@ public class Gamer : MonoBehaviour {
 			isWaiting=false;
 			
 			dice=Random.Range(1,7);
+			/*if (turn == 2) {
+				GameObject.Find ("bl").GetComponent<Dice> ().rollIt ();
+			} else if (turn == 4) {
+				GameObject.Find ("gl").GetComponent<Dice> ().rollIt ();
+			}*/
 			GameObject.Find("T_Dice").GetComponent<GUIText>().material.color=Color.black;
 			GameObject.Find("T_Dice").GetComponent<GUIText>().text=dice.ToString();
 			
@@ -1033,9 +1069,9 @@ public class Gamer : MonoBehaviour {
 				response=RB.Genetic_Move(Best,dice,Board,ref RP,ref RB,ref RY,ref RG);
 			else if(turn==4)
 				response=RG.Genetic_Move(Best,dice,Board,ref RP,ref RB,ref RY,ref RG);
-			
-		Finish_AI_Turn:
-				;		
+
+			Finish_AI_Turn:
+			;
 		}
 		
 		if(Input.GetMouseButtonDown (0) && !isWaiting  && !isError){
@@ -1106,7 +1142,63 @@ public class Gamer : MonoBehaviour {
 							GameObject.Find("T_Dice").GetComponent<GUIText>().text="";
 							isWaiting=true;
 						}						
-					}				
+					}	
+					else if(hit.collider.gameObject.name.StartsWith("_B") && turn==2){
+
+						isWaiting=true;
+
+						if(hit.collider.gameObject.name=="_Blue1")
+							response=RY.MoveGeeti(dice,Board,1,ref RP,ref RB,ref RY,ref RG);
+
+						else if(hit.collider.gameObject.name=="_Blue2")
+							response=RY.MoveGeeti(dice,Board,2,ref RP,ref RB,ref RY,ref RG);
+
+						else if(hit.collider.gameObject.name=="_Blue3")
+							response=RY.MoveGeeti(dice,Board,3,ref RP,ref RB,ref RY,ref RG);
+
+						else if(hit.collider.gameObject.name=="_Blue4")
+							response=RY.MoveGeeti(dice,Board,4,ref RP,ref RB,ref RY,ref RG);
+
+						if(dice==6)
+							isWaiting=true;
+
+						if(!response)
+							isWaiting=false;
+
+						if(dice!=6 && response){
+							turn=(turn%4)+1;
+							GameObject.Find("T_Dice").GetComponent<GUIText>().text="";
+							isWaiting=true;
+						}						
+					}
+					else if(hit.collider.gameObject.name.StartsWith("_G") && turn==4){
+
+						isWaiting=true;
+
+						if(hit.collider.gameObject.name=="_Green1")
+							response=RY.MoveGeeti(dice,Board,1,ref RP,ref RB,ref RY,ref RG);
+
+						else if(hit.collider.gameObject.name=="_Green2")
+							response=RY.MoveGeeti(dice,Board,2,ref RP,ref RB,ref RY,ref RG);
+
+						else if(hit.collider.gameObject.name=="_Green3")
+							response=RY.MoveGeeti(dice,Board,3,ref RP,ref RB,ref RY,ref RG);
+
+						else if(hit.collider.gameObject.name=="_Green4")
+							response=RY.MoveGeeti(dice,Board,4,ref RP,ref RB,ref RY,ref RG);
+
+						if(dice==6)
+							isWaiting=true;
+
+						if(!response)
+							isWaiting=false;
+
+						if(dice!=6 && response){
+							turn=(turn%4)+1;
+							GameObject.Find("T_Dice").GetComponent<GUIText>().text="";
+							isWaiting=true;
+						}						
+					}
 					
 				}
 			}
