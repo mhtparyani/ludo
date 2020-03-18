@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour {
 
+    public int finalSide = 0;
     // Array of dice sides sprites to load from Resources folder
     private Sprite[] diceSides;
 
@@ -33,7 +34,7 @@ public class Dice : MonoBehaviour {
         int randomDiceSide = 0;
 
         // Final side or value that dice reads in the end of coroutine
-        int finalSide = 0;
+        //int finalSide = 0;
 
         // Loop to switch dice sides ramdomly
         // before final side appears. 20 itterations here.
@@ -46,7 +47,7 @@ public class Dice : MonoBehaviour {
             rend.sprite = diceSides[randomDiceSide];
 
             // Pause before next itteration
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         }
 
         // Assigning final side so you can use this value later in your game

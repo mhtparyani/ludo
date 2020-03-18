@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 9dcf1f3018190eb43acd2d1fc4e9c968
+timeCreated: 1584429061
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 300
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: MALDINI
+  fontNames:
+  - MALDINI
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

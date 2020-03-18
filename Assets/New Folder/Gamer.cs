@@ -1,6 +1,6 @@
  using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public struct Square{
    
 	public string waypoint;
@@ -526,6 +526,7 @@ public struct Player{
 	public bool MoveGeeti(int dice,Square []Board,int n,ref Player RP,ref Player RB,ref Player RY,ref Player RG){
 	
 		GameObject.Find("T_Error").GetComponent<GUIText>().text="";
+		GameObject.Find("texmsg").GetComponent<Text>().text="";
 		
 		if(Geeti[n-1].index==-1){
 			if(dice==6){
@@ -540,8 +541,9 @@ public struct Player{
 				return true;
 			}
 			else{
-				GameObject.Find("T_Error").GetComponent<GUIText>().material.color=Color.red;
-				GameObject.Find("T_Error").GetComponent<GUIText>().text="Choose Correct Piece!!!";
+				//GameObject.Find("T_Error").GetComponent<GUIText>().material.color=Color.red;
+				//GameObject.Find("T_Error").GetComponent<GUIText>().text="Choose Correct Piece!!!";
+				GameObject.Find("texmsg").GetComponent<Text>().text="Choose Correct Piece";
 				return false;
 			}
 		}
@@ -622,8 +624,10 @@ public struct Player{
 			}
 			else{
 			
-				GameObject.Find("T_Error").GetComponent<GUIText>().material.color=Color.red;
-				GameObject.Find("T_Error").GetComponent<GUIText>().text="This Move is not Possible!!!";
+			//	GameObject.Find("T_Error").GetComponent<GUIText>().material.color=Color.red;
+			//	GameObject.Find("T_Error").GetComponent<GUIText>().text="This Move is not Possible!!!";
+				GameObject.Find("texmsg").GetComponent<Text>().text= "illegal move";
+				
 				return false;
 			
 			}
@@ -770,6 +774,8 @@ public class Gamer : MonoBehaviour {
 	public Player RY;
 	public Player RG;
 
+   public Text textt;
+   public Text Texttq;
 
 	public GameObject redd;
 	public GameObject greeen;
@@ -793,21 +799,24 @@ public class Gamer : MonoBehaviour {
 	float AI_Move_TimeOut;
 	
 	Chromosome Best;
-		
+	
 	public Texture2D buttonImage=null; 
 	private void OnGUI(){
 		
-		if (GUI.Button(new Rect(610, 65,buttonImage.width, buttonImage.height), buttonImage) && isWaiting && !isError){			//130,50
+		if (GUI.Button(new Rect(20, 20,60, 60), buttonImage) && isWaiting && !isError){			//130,50
             dice=Random.Range(1,7);
-			GameObject.Find("T_Dice").GetComponent<GUIText>().material.color=Color.black;
-			GameObject.Find("T_Dice").GetComponent<GUIText>().text=dice.ToString();
+			//GameObject.Find("T_Dice").GetComponent<GUIText>().material.color=Color.black;
+			//GameObject.Find("T_Dice").GetComponent<GUIText>().text=dice.ToString();
+			textt.text = dice.ToString();
 			
 			GameObject.Find("T_Error").GetComponent<GUIText>().text="";
+			Texttq.text ="";
 			
 			if(dice<6 && ( (turn==1 && RP.Nikli==0) || (turn==2 && RB.Nikli==0) || (turn==3 && RY.Nikli==0)|| (turn==4 && RG.Nikli==0))){
 				
-				GameObject.Find("T_Error").GetComponent<GUIText>().material.color=Color.red;
-				GameObject.Find("T_Error").GetComponent<GUIText>().text="No Move Possible!!!";
+				//GameObject.Find("T_Error").GetComponent<GUIText>().material.color=Color.red;
+				//GameObject.Find("T_Error").GetComponent<GUIText>().text="No Move Possible!!!";
+				Texttq.text = "no move possible";
 				
 				isError=true;
 				errorTimeOut=Time.time+1;							
@@ -992,6 +1001,7 @@ public class Gamer : MonoBehaviour {
 			turn=(turn%4)+1;
 			GameObject.Find("T_Dice").GetComponent<GUIText>().text="";
 			GameObject.Find("T_Error").GetComponent<GUIText>().text="";			
+			Texttq.text = "";
 		}
 		
 		DisplayInfo();
@@ -1003,8 +1013,10 @@ public class Gamer : MonoBehaviour {
 			isWaiting=true;
 			if(dice!=6)
 				turn=(turn%4)+1;
-			GameObject.Find("T_Dice").GetComponent<GUIText>().text="";
-			GameObject.Find("T_Error").GetComponent<GUIText>().text="";
+			//GameObject.Find("T_Dice").GetComponent<GUIText>().text="";
+			textt.text = "";
+			Texttq.text = "";
+			//GameObject.Find("T_Error").GetComponent<GUIText>().text="";
 			
 		}
 		
@@ -1016,15 +1028,18 @@ public class Gamer : MonoBehaviour {
 			isWaiting=false;
 			
 			dice=Random.Range(1,7);
-			GameObject.Find("T_Dice").GetComponent<GUIText>().material.color=Color.black;
-			GameObject.Find("T_Dice").GetComponent<GUIText>().text=dice.ToString();
+			//GameObject.Find("T_Dice").GetComponent<GUIText>().material.color=Color.black;
+			//GameObject.Find("T_Dice").GetComponent<GUIText>().text=dice.ToString();
+			textt.text =dice.ToString();
 			
 			GameObject.Find("T_Error").GetComponent<GUIText>().text="";
+			Texttq.text = "";
 			
 			if( dice<6 && ( (turn==2 && RB.Nikli==0) || (turn==4 && RG.Nikli==0))){
 				
-				GameObject.Find("T_Error").GetComponent<GUIText>().material.color=Color.red;
-				GameObject.Find("T_Error").GetComponent<GUIText>().text="No Move Possible!!!";
+				//GameObject.Find("T_Error").GetComponent<GUIText>().material.color=Color.red;
+				//GameObject.Find("T_Error").GetComponent<GUIText>().text="no move possible";
+				Texttq.text = "no move possible";
 				
 				goto Finish_AI_Turn;		
 			}
