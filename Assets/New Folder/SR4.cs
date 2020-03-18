@@ -8,7 +8,7 @@ public class SR4 : MonoBehaviour {
 	public string color;
 	public Vector3 initialPos;
 	void Start () {
-		initialPos=GameObject.Find("ir4").transform.position;
+		initialPos=transform.position;
 		pos=initialPos;
 		index=-1;
 		color="Red";

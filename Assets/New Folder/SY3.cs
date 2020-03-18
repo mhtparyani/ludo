@@ -8,7 +8,7 @@ public class SY3 : MonoBehaviour {
 	public string color;
 	public Vector3 initialPos;
 	void Start () {
-		initialPos=GameObject.Find("iy3").transform.position;
+		initialPos=transform.position;
 		pos=initialPos;
 		index=-1;
 		color="Yellow";
